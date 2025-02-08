@@ -1,34 +1,28 @@
+use itertools::Itertools;
 use std::fs::read_to_string;
 
 fn main() {
-    let mut left_column: Vec<i32> = vec![];
-    let mut right_column: Vec<i32> = vec![];
+    let (left, right): (Vec<_>, Vec<_>) = read_to_string("input.txt")
+        .unwrap()
+        .lines()
+        .map(|line| {
+            line.split_whitespace()
+                .map(|str| str.parse::<i32>().unwrap())
+                .next_tuple::<(_, _)>()
+                .unwrap()
+        })
+        .unzip::<_, _, Vec<_>, Vec<_>>();
 
-    for line in read_to_string("input.txt").unwrap().lines() {
-        for (i, str) in line.split(" ").filter(|n| !n.is_empty()).enumerate() {
-            let number = str.parse::<i32>().unwrap();
-
-            if i == 0 {
-                left_column.push(number);
-            } else {
-                right_column.push(number);
-            }
-        }
-    }
-
-    left_column.sort();
-    right_column.sort();
-
-    let mut score: i32 = 0;
-
-    for num in left_column {
-        score += num
-            * right_column
+    let answer = left
+        .into_iter()
+        .map(|num| {
+            num * right
                 .clone()
                 .into_iter()
-                .filter(|&n| n == num)
-                .count() as i32;
-    }
+                .filter(|&num2| num == num2)
+                .count() as i32
+        })
+        .sum::<i32>();
 
-    println!("{}", score);
+    println!("{}", answer);
 }
