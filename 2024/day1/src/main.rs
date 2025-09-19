@@ -14,14 +14,8 @@ fn main() {
         .unzip::<_, _, Vec<_>, Vec<_>>();
 
     let answer = left
-        .into_iter()
-        .map(|num| {
-            num * right
-                .clone()
-                .into_iter()
-                .filter(|&num2| num == num2)
-                .count() as i32
-        })
+        .iter()
+        .map(|num| num * right.iter().filter(|&num2| num == num2).count() as i32)
         .sum::<i32>();
 
     println!("{}", answer);

@@ -1,13 +1,11 @@
-from typing import List, Tuple
-
 with open("input.txt", "r") as file:
     input = [s.strip() for s in file.readlines()]
 
 
-found_nines: List[List[Tuple[int, int]]] = []
+found_nines: list[list[tuple[int, int]]] = []
 
 
-def search_around(position: Tuple[int, int], zero_index_found_nines: int):
+def search_around(position: tuple[int, int], zero_index_found_nines: int):
     value_string = input[position[0]][position[1]]
 
     if not value_string.isdigit():
@@ -15,7 +13,7 @@ def search_around(position: Tuple[int, int], zero_index_found_nines: int):
 
     value = int(value_string)
 
-    found_positions: List[Tuple[int, int]] = []
+    found_positions: list[tuple[int, int]] = []
 
     for around_pos in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
         x = position[0] + around_pos[0]

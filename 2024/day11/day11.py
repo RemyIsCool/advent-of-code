@@ -1,5 +1,4 @@
 from functools import cache
-from typing import Tuple
 
 with open("input.txt", "r") as f:
     stones = f.read().strip()
@@ -8,7 +7,7 @@ stones = [int(n) for n in stones.split(" ")]
 
 
 @cache
-def calculate_single_blink(value: int) -> Tuple[int, int | None]:
+def calculate_single_blink(value: int) -> tuple[int, int | None]:
     text = str(value)
     num_digits = len(text)
 

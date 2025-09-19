@@ -1,11 +1,9 @@
-from typing import List, Tuple
-
 with open("input.txt", "r") as file:
     input = file.read()
 
 input = input.strip()
 
-files: List[Tuple[int | None, int]] = []
+files: list[tuple[int | None, int]] = []
 
 id = 0
 for index, digit in enumerate(input):
@@ -39,7 +37,7 @@ for x in range(len(files) - 1, -1, -1):
 
         break
 
-flattened: List[int | None] = []
+flattened: list[int | None] = []
 
 for x, (file_id, file_count) in enumerate(files_sorted):
     for y in range(file_count):

@@ -1,6 +1,6 @@
 from typing import Any
-from anytree import Node, PostOrderIter, PreOrderIter
 
+from anytree import Node, PostOrderIter, PreOrderIter
 
 with open("day7/input.txt", "r") as f:
     input: list[str] = f.readlines()
