@@ -81,6 +81,4 @@ int main() {
       printf("part 2: %d\n", i + 1);
     }
   }
-
-  return 0;
 }
