@@ -1,36 +1,32 @@
+from collections import defaultdict
+
 puzzle_input = int(input())
-puzzle_input = 50
 
+x, y = 0, 0
 
-ring = 8
-ring_count = 0
+count = 0
+length = 1
+increase = False
+direction = 0
 
-x, y = 1, 0
-dx, dy = 0, -1
+values = defaultdict(int)
+values[(0, 0)] = 1
 
-movement_counter = 0
+max_value = 0
+while max_value < puzzle_input:
+    x, y = [(x + 1, y), (x, y - 1), (x - 1, y), (x, y + 1)][direction]
 
-for x in range(2, puzzle_input):
-    ring_count += 1
-    movement_counter += 1
-    if movement_counter > ring_count / 4:
-        movement_counter = 0
+    res = sum(values[(x + i, y + j)] for i in range(-1, 2) for j in range(-1, 2))
+    max_value = max(max_value, res)
+    values[(x, y)] = res
 
-        if dx == 0 and dy == 1:
-            dx = -1
-            dy = 0
-        elif dx == 0 and dy == -1:
-            dx = 1
-            dy = 0
-        elif dx == 1 and dy == 0:
-            dx = 0
-            dy = 1
-        else:
-            dx = 0
-            dy = -1
-    x += dx
-    y += dy
-    print(x, y)
-    if ring_count > ring:
-        ring += 8
-        ring_count = 0
+    count += 1
+    if count >= length:
+        if increase:
+            length += 1
+        direction += 1
+        direction %= 4
+        increase = not increase
+        count = 0
+
+print(max_value)
