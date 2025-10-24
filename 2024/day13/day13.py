@@ -62,14 +62,10 @@ for machine_string in machines_strings:
 answer = 0
 
 for machine in machines:
-    a, b = sp.symbols("a b")
-
-    eqx = sp.Eq(a * machine.a.x + b * machine.b.x, machine.prize.x)
-    eqy = sp.Eq(a * machine.a.y + b * machine.b.y, machine.prize.y)
-
-    result = sp.solve([eqx, eqy], (a, b))
-
-    sa, sb = map(float, result.values())
+    sa = (machine.b.y * machine.prize.x - machine.b.x * machine.prize.y) / (
+        machine.a.x * machine.b.y - machine.b.x * machine.a.y
+    )
+    sb = (machine.prize.x - machine.a.x * sa) / machine.b.x
 
     if sa % 1 != 0 or sb % 1 != 0:
         continue

@@ -1,0 +1,55 @@
+94a + 22b = 8400
+34a + 67b = 5400
+
+Solve for a:
+	94a + 22b = 8400
+	34a + 67b = 5400
+
+	67(94a + 22b) = 67(8400)
+	22(34a + 67b) = 22(5400)
+
+	6298a + 1474b = 562800
+	748a + 1474b = 118800
+
+	(6298a + 1474b) - (748a + 1474b) = 562800 - 118800
+	5550a = 444000
+	5550a / 5550 = 444000 / 5550
+	a = 80
+
+Solve for b:
+	94a + 22b = 8400
+	34a + 67b = 5400
+
+	94(80) + 22b = 8400
+	7520 + 22b = 8400
+	22b = 8400 - 7520
+	22b = 880
+	22b / 22 = 880 / 22
+	b = 40
+
+ea + fb = x
+ga + hb = y
+94a + 22b = 8400   x
+34a + 67b = 5400   y
+
+h(ea + fb) = hx
+f(ga + hb) = fy
+
+(eh)a + (fh)b = hx
+(fg)a + (fh)b = fy
+
+(eh - fg)a = hx - fy
+
+a = (hx - fy) / (eh - fg)
+
+ea + fb = x
+ga + hb = y
+
+ea + fb = x
+fb = x - ea
+
+b = (x - ea) / f
+
+
+let a_count = (b.y * prize.x - b.x * prize.y) / (a.x * b.y - b.x * a.y)
+let b_count = (prize.x - a.x * a_count) / b.x
